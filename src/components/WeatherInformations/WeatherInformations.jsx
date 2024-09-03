@@ -1,10 +1,27 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 
 import './WeatherInformations.css'
 
 function WeatherInformations({weather}) {
 
   console.log(weather)
+
+  WeatherInformations.propTypes = {
+    weather: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      weather: PropTypes.arrayOf(PropTypes.shape({
+        icon: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+      })).isRequired,
+      main: PropTypes.shape({
+        temp: PropTypes.number.isRequired,
+        feels_like: PropTypes.number.isRequired,
+        humidity: PropTypes.number.isRequired,
+        pressure: PropTypes.number.isRequired,
+      }).isRequired,
+    }).isRequired,
+  };
 
   return (
     <div className='weather-container'>
